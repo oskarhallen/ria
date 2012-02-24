@@ -38,10 +38,10 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
 
             this.selectedList = ListCollection.get($(e.currentTarget).data('id'));
             
-            if (this.model.tasks.length === 1) {
-                this.model.tasks.bind('add', this.addOneTask, this);
-                this.model.tasks.bind('reset', this.addAllTasks, this);
-                this.model.tasks.fetch();
+            if (this.selectedList.tasks.length === 1) {
+                this.selectedList.tasks.bind('add', this.addOneTask, this);
+                this.selectedList.tasks.bind('reset', this.addAllTasks, this);
+                this.selectedList.tasks.fetch();
             } else {
                 this.addAllTasks();
             }
@@ -57,7 +57,7 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
         },
 
         addAllTasks: function() {
-            this.model.tasks.each(this.addOneTask);
+            this.selectedList.tasks.each(this.addOneTask);
         },
 
         backClicked: function(e) {
