@@ -8,13 +8,11 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
 
         events: {
             'keypress #new-item':  'createItem',
-            'click .list-item': 'listClicked',
+            'click .list-item-content': 'listClicked',
             'click #back': 'backClicked'
         },
             
         initialize: function() {
-            this.input = this.$("#new-item");
-
             ListCollection.bind('add', this.addOneList, this);
             ListCollection.bind('reset', this.addAllLists, this);
             ListCollection.fetch();
@@ -37,7 +35,7 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
             this.$('#items').empty();
             this.$('#back').css('visibility', 'visible');
 
-            this.selectedList = ListCollection.get($(e.currentTarget).data('id'));
+            this.selectedList = ListCollection.get($(e.currentTarget).parent().data('id'));
             
             if (!this.selectedList.tasks.first().get('content')) {
                 this.selectedList.tasks.bind('add', this.addOneTask, this);
@@ -76,11 +74,11 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
             if (e.keyCode != 13) return;
 
             if (!this.selectedList) {
-                ListCollection.create({content: this.input.val()});
-                this.input.val('');
+                ListCollection.create({content: this.$("#new-item").val()});
+                this.$("#new-item").val('');
             } else {
-                this.selectedList.tasks.create({content: this.input.val()});
-                this.input.val('');
+                this.selectedList.tasks.create({content: this.$("#new-item").val()});
+                this.$("#new-item").val('');
             }
         }
 

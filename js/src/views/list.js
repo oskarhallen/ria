@@ -5,6 +5,12 @@ function($, _, Backbone, TaskView, ListTemplate) {
         template: _.template(ListTemplate),
         tagName: 'li',
 
+        events: {
+            'click .item-delete': 'deleteList',
+            'mouseover': 'toggleDeleteButton',
+            'mouseout': 'toggleDeleteButton'
+        },
+
         initialize: function() {
             //this.model.bind('change', this.render, this);
             this.model.view = this;
@@ -29,6 +35,20 @@ function($, _, Backbone, TaskView, ListTemplate) {
                 this.model.bind('change:id', function() {
                     that.$('.list-item').attr('data-id', that.model.get('id'));
                 });
+            }
+        },
+
+        deleteList: function(e) {
+            //this.model.tasks.destroy();
+            this.model.destroy();
+            this.remove();
+        },
+
+        toggleDeleteButton: function(e) {
+            if (this.$('.item-delete').css('visibility') === 'visible') {
+                this.$('.item-delete').css('visibility', 'collapse');
+            } else {
+                this.$('.item-delete').css('visibility', 'visible');
             }
         }
 

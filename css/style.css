@@ -67,6 +67,8 @@ li {
     font-size: 20px;
     margin: 0;
     padding: 16px 0 0 20px;
+    float: left;
+    cursor: pointer;
 }
 
 .list-item {
@@ -75,6 +77,13 @@ li {
 
 .task-item {
     background-color: #f26c00;
+}
+
+.item-delete {
+    float: right;
+    padding: 19px 20px 0 0;
+    cursor: pointer;
+    visibility: collapse;
 }
 
 /**
@@ -89,6 +98,7 @@ li {
     height: 37px;
     background-color: #161616;
     visibility: collapse;
+    cursor: pointer;
 }
 
 #back a {
@@ -106,6 +116,7 @@ li {
     width: 27px;
     height: 30px;
     background-color: #161616;
+    cursor: pointer;
 }
 
 #settings {
@@ -116,4 +127,5 @@ li {
     width: 32px;
     height: 32px;
     background-color: #161616;
+    cursor: pointer;
 }

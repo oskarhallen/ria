@@ -6,7 +6,10 @@ function($, _, Backbone, TaskTemplate) {
         tagName: 'li',
 
         events: {
-            'click .task-item': 'toggleTask'
+            'click .task-item-content': 'toggleTask',
+            'click .item-delete': 'deleteTask',
+            'mouseover': 'toggleDeleteButton',
+            'mouseout': 'toggleDeleteButton'
         },
 
         initialize: function() {
@@ -33,6 +36,19 @@ function($, _, Backbone, TaskTemplate) {
 
         toggleTask: function(e) {
             this.model.toggle();
+        },
+
+        deleteTask: function(e) {
+            this.model.destroy();
+            this.remove();
+        },
+
+        toggleDeleteButton: function(e) {
+            if (this.$('.item-delete').css('visibility') === 'visible') {
+                this.$('.item-delete').css('visibility', 'collapse');
+            } else {
+                this.$('.item-delete').css('visibility', 'visible');
+            }
         }
 
     });
