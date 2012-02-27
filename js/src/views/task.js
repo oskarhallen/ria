@@ -1,14 +1,13 @@
 define(['jquery', 'underscore', 'backbone', 'text!src/templates/task.html'],
 function($, _, Backbone, TaskTemplate) {
     var TaskView = Backbone.View.extend({
-
-        // The template.
+        // The `template` for a task.
         template: _.template(TaskTemplate),
 
-        // Tag name.
+        // The `tag` a task will be contained in.
         tagName: 'li',
 
-        // Events.
+        // Events for a task.
         events: {
             'click .task-item-content': 'toggleTask',
             'click .item-delete': 'deleteTask',
@@ -16,20 +15,20 @@ function($, _, Backbone, TaskTemplate) {
             'mouseout': 'toggleDeleteButton'
         },
 
-        // Constructor.
+        // Initialize the task view.
         initialize: function() {
             this.model.bind('change', this.render, this);
             this.model.view = this;
         },
 
-        // Render.
+        // Renders the task wrapping it in an element.
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
             this.setContent();
             return this;
         },
 
-        // Set the content.
+        // Set the task's content.
         setContent: function() {
             var content = this.model.get('content');
             this.$('.item-content').text(content);
@@ -46,13 +45,13 @@ function($, _, Backbone, TaskTemplate) {
             this.model.toggle();
         },
 
-        // Delete the task.
+        // Destory the task's model and removes itself.
         deleteTask: function(e) {
             this.model.destroy();
             this.remove();
         },
 
-        // Toggle delete button.
+        // Shows or hides the delete button depending on it's current state.
         toggleDeleteButton: function(e) {
             if (this.$('.item-delete').css('visibility') === 'visible') {
                 this.$('.item-delete').css('visibility', 'collapse');
@@ -60,7 +59,6 @@ function($, _, Backbone, TaskTemplate) {
                 this.$('.item-delete').css('visibility', 'visible');
             }
         }
-
     });
     return TaskView;
 });

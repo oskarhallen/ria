@@ -1,34 +1,32 @@
 define(['jquery', 'underscore', 'backbone', 'taskview','text!src/templates/list.html'],
 function($, _, Backbone, TaskView, ListTemplate) {
     var ListView = Backbone.View.extend({
-
-        // Template.
+        // The `template` for the list.
         template: _.template(ListTemplate),
 
-        // Tag.
+        // The `tag` the list will be contained in.
         tagName: 'li',
 
-        // Events.
+        // Events for the list.
         events: {
             'click .item-delete': 'deleteList',
             'mouseover': 'toggleDeleteButton',
             'mouseout': 'toggleDeleteButton'
         },
 
-        // Constructor.
+        // Initializes the list view.
         initialize: function() {
-            //this.model.bind('change', this.render, this);
             this.model.view = this;
         },
 
-        // Render.
+        // Renders the list wrapping it in an element.
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
             this.setContent();
             return this;
         },
 
-        // Set the content.
+        // Sets the list's content.
         setContent: function() {
             var content = this.model.get('content');
             var that = this;
@@ -45,14 +43,13 @@ function($, _, Backbone, TaskView, ListTemplate) {
             }
         },
 
-        // Delete a list.
+        // Destorys the list's model and removes itself.
         deleteList: function(e) {
-            //this.model.tasks.destroy();
             this.model.destroy();
             this.remove();
         },
 
-        // Toggle the delete button.
+        // Shows or hides the delete button depending on it's current state.
         toggleDeleteButton: function(e) {
             if (this.$('.item-delete').css('visibility') === 'visible') {
                 this.$('.item-delete').css('visibility', 'collapse');
@@ -60,7 +57,6 @@ function($, _, Backbone, TaskView, ListTemplate) {
                 this.$('.item-delete').css('visibility', 'visible');
             }
         }
-
     });
     return ListView;
 });
