@@ -38,7 +38,7 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
 
             this.selectedList = ListCollection.get($(e.currentTarget).data('id'));
             
-            if (this.selectedList.tasks.length === 1) {
+            if (!this.selectedList.tasks.first().get('content')) {
                 this.selectedList.tasks.bind('add', this.addOneTask, this);
                 this.selectedList.tasks.bind('reset', this.addAllTasks, this);
                 this.selectedList.tasks.fetch();

@@ -3,7 +3,7 @@ function(_, Backbone) {
     var TaskModel = Backbone.Model.extend({
         
         defaults: {
-            content: 'empty task',
+            content: null,
             done: false
         },
 

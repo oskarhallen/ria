@@ -3,7 +3,7 @@ function(_, Backbone, TaskCollection) {
     var ListModel = Backbone.Model.extend({
         
         defaults: {
-            content: 'empty list'
+            content: null
         },
 
         initialize: function() {
