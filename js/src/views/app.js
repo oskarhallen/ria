@@ -15,7 +15,7 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
             'click #back': 'backClicked'
         },
             
-        // Constructor.
+        // The constructor.
         initialize: function() {
             ListCollection.bind('add', this.addOneList, this);
             ListCollection.bind('reset', this.addAllLists, this);
