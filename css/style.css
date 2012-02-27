@@ -1,0 +1,131 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: inherit;
+    background-color: #2c2c2c;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    width: 550px;
+    min-height: 100%;
+    padding-top: 0px;
+    background-color: #161616;
+    margin: auto;
+    position: relative;
+}
+
+/**
+ * The list
+ */
+#list {
+    width: 540px;
+    padding: 0;
+    min-height: 100%;
+}
+
+#create-item {
+    padding: 10px 0 0 10px;
+    width: inherit;
+}
+
+#create-item input {
+    width: 524px;
+    height: 30px;
+    font-size: 20px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#items {
+    padding: 10px 0 0 10px;
+}
+
+.item {
+    width: inherit;
+    height: 60px;
+    margin: 0 0 5px 0;
+}
+
+.item-content {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0;
+    padding: 16px 0 0 20px;
+    float: left;
+    cursor: pointer;
+}
+
+.list-item {
+    background-color: #006cff;
+}
+
+.task-item {
+    background-color: #f26c00;
+}
+
+.item-delete {
+    float: right;
+    padding: 19px 20px 0 0;
+    cursor: pointer;
+    visibility: collapse;
+}
+
+/**
+ *Buttons
+ */
+#back {
+    position: absolute;
+    left: -40px;
+    top: 57px;
+    padding: 3px 0 0 11px;
+    width: 29px;
+    height: 37px;
+    background-color: #161616;
+    visibility: collapse;
+    cursor: pointer;
+}
+
+#back a {
+    color: #ffffff;
+    font-size: 26px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#about {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 10px 0 0 13px;
+    width: 27px;
+    height: 30px;
+    background-color: #161616;
+    cursor: pointer;
+}
+
+#settings {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 8px 0 0 8px;
+    width: 32px;
+    height: 32px;
+    background-color: #161616;
+    cursor: pointer;
+}
