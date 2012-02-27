@@ -2,35 +2,41 @@ define(['jquery', 'underscore', 'backbone', 'listview', 'listcollection', 'taskv
 function($, _, Backbone, ListView, ListCollection, TaskView) {
     var AppView = Backbone.View.extend({
         
+        // The element.
         el: $('body'),
 
+        // Current selected list.
         selectedList: null,
 
+        // Events.
         events: {
             'keypress #new-item':  'createItem',
             'click .list-item-content': 'listClicked',
             'click #back': 'backClicked'
         },
             
+        // Constructor.
         initialize: function() {
             ListCollection.bind('add', this.addOneList, this);
             ListCollection.bind('reset', this.addAllLists, this);
             ListCollection.fetch();
         },
+        
+        // List Functions
+        // --------------
 
-        /**
-         * Lists
-         * Functions for the list part of the application
-         */
+        // Add one list.
         addOneList: function(list) {
             var view = new ListView({model: list});
             this.$('#items').append(view.render().el);
         },
 
+        // Add all lists.
         addAllLists: function() {
             ListCollection.each(this.addOneList);
         },
 
+        // List clicked.
         listClicked: function(e) {
             this.$('#items').empty();
             this.$('#back').css('visibility', 'visible');
@@ -46,19 +52,21 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
             }
         },
 
-        /**
-         * Task
-         * Functions for the task part of the application
-         */
+        // Task Functions
+        // --------------
+
+        // Add one task.
         addOneTask: function(task) {
             var view = new TaskView({model: task});
             this.$('#items').append(view.render().el);
         },
 
+        // Add all tasks.
         addAllTasks: function() {
             this.selectedList.tasks.each(this.addOneTask);
         },
 
+        // Back clicked.
         backClicked: function(e) {
             this.selectedList = null;
             this.$('#items').empty();
@@ -66,10 +74,10 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
             this.addAllLists();
         },
 
-        /**
-         * Global
-         * Functions for both the task and list part of the application
-         */
+        // Global Functions
+        // ----------------
+
+        // Create a new item.
         createItem: function(e) {
             if (e.keyCode != 13) return;
 
