@@ -1,13 +1,12 @@
 define(['underscore', 'backbone', 'taskcollection'],
 function(_, Backbone, TaskCollection) {
     var ListModel = Backbone.Model.extend({
-        
-        // List default values.
+        // The list's default values.
         defaults: {
             content: null
         },
 
-        // The constructor.
+        // Initializes a list.
         initialize: function() {
             if (!this.content) {
                 this.content = this.defaults.content;
@@ -21,7 +20,6 @@ function(_, Backbone, TaskCollection) {
                 this.tasks = new TaskCollection({id: this.id});
             }
         }
-
     });
     return ListModel;
 });
