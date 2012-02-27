@@ -27,6 +27,7 @@ li {
     padding-top: 0px;
     background-color: #161616;
     margin: auto;
+    position: relative;
 }
 
 /**
@@ -77,8 +78,26 @@ li {
 }
 
 /**
- * Bottom buttons
+ *Buttons
  */
+#back {
+    position: absolute;
+    left: -40px;
+    top: 57px;
+    padding: 3px 0 0 11px;
+    width: 29px;
+    height: 37px;
+    background-color: #161616;
+    visibility: collapse;
+}
+
+#back a {
+    color: #ffffff;
+    font-size: 26px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 #about {
     position: fixed;
     left: 0;

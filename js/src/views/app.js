@@ -9,7 +9,7 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
         events: {
             'keypress #new-item':  'createItem',
             'click .list-item': 'listClicked',
-            'click #about': 'backClicked'
+            'click #back': 'backClicked'
         },
             
         initialize: function() {
@@ -35,6 +35,7 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
 
         listClicked: function(e) {
             this.$('#items').empty();
+            this.$('#back').css('visibility', 'visible');
 
             this.selectedList = ListCollection.get($(e.currentTarget).data('id'));
             
@@ -63,6 +64,7 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
         backClicked: function(e) {
             this.selectedList = null;
             this.$('#items').empty();
+            this.$('#back').css('visibility', 'collapse');
             this.addAllLists();
         },
 

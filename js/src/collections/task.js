@@ -6,6 +6,10 @@ function(_, Backbone, LocalStorage, TaskModel){
 
         initialize: function(args) {
             this.localStorage = new LocalStorage('list-' + args.id);
+        },
+
+        comparator: function(task) {
+            return task.get('done');
         }
 
     });
