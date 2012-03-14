@@ -22,6 +22,6 @@ require.config({
 });
 
 require(['appview'],
-function(AppView){
+function(AppView) {
     var app_view = new AppView();
 });
