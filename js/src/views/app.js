@@ -7,12 +7,14 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
 
         // Current selected list.
         selectedList: null,
+        isDelete: false,
 
         // Events for the application.
         events: {
             'keypress #new-item':  'createItem',
-            'click .list-item-content': 'showTasks',
-            'click #back': 'showLists'
+            'click .list-item': 'showTasks',
+            'click #back': 'showLists',
+            'click .item-delete': 'showTasks'
         },
             
         // Initializes the application's view.
@@ -38,18 +40,25 @@ function($, _, Backbone, ListView, ListCollection, TaskView) {
 
         // Shows the tasks belonging to the selected list.
         showTasks: function(e) {
-            this.$('#items').empty();
-            this.$('#back').css('visibility', 'visible');
-
-            this.selectedList = ListCollection.get($(e.currentTarget).parent().data('id'));
-            
-            if (!this.selectedList.tasks.first().get('content')) {
-                this.selectedList.tasks.bind('add', this.addOneTask, this);
-                this.selectedList.tasks.bind('reset', this.addAllTasks, this);
-                this.selectedList.tasks.fetch();
-            } else {
-                this.addAllTasks();
+            if($(e.currentTarget).attr('class') == 'item-delete'){
+                this.isDelete = true;
+                return;
             }
+            if(!this.isDelete) {
+                this.$('#items').empty();
+                this.$('#back').css('visibility', 'visible');
+
+                this.selectedList = ListCollection.get($(e.currentTarget).data('id'));
+                
+                if (!this.selectedList.tasks.first().get('content')) {
+                    this.selectedList.tasks.bind('add', this.addOneTask, this);
+                    this.selectedList.tasks.bind('reset', this.addAllTasks, this);
+                    this.selectedList.tasks.fetch();
+                } else {
+                    this.addAllTasks();
+                }
+            }
+            this.isDelete = false;
         },
 
         // Task View Functions

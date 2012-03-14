@@ -6,11 +6,12 @@ function($, _, Backbone, TaskTemplate) {
 
         // The `tag` a task will be contained in.
         tagName: 'li',
+        isDelete: false,
 
         // Events for a task.
         events: {
-            'click .task-item-content': 'toggleTask',
             'click .item-delete': 'deleteTask',
+            'click .task-item': 'toggleTask',
             'mouseover': 'toggleDeleteButton',
             'mouseout': 'toggleDeleteButton'
         },
@@ -34,19 +35,21 @@ function($, _, Backbone, TaskTemplate) {
             this.$('.item-content').text(content);
 
             if (this.model.get('done')) {
-                this.$('.item').css('background-color', '#2c2c2c');
-                this.$('.item-content').css('color', '#555555');
+               	this.$('#items li div').css('background-color', '#2c2c2c');
+                this.$('.item-content').css('color', '#aeaeae');
                 this.$('.item-content').css('text-decoration', 'line-through');
             }
         },
 
         // Toggle the task.
         toggleTask: function(e) {
-            this.model.toggle();
+            if(!this.isDelete){this.model.toggle();}
+            this.isDelete = false;
         },
 
         // Destory the task's model and removes itself.
         deleteTask: function(e) {
+            this.isDelete = true;
             this.model.destroy();
             this.remove();
         },
