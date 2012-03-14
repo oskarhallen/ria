@@ -71,13 +71,36 @@ li {
     cursor: pointer;
 }
 
+/**********************************************
+*	Nice flow of colors
+**********************************************/
+#items li .list-item{background:#CBA700;}
+#items li:nth-child(1) .list-item{background:#BF3B00;}
+#items li:nth-child(2) .list-item{background:#A54017;}
+#items li:nth-child(3) .list-item{background:#B74C0A;}
+#items li:nth-child(4) .list-item{background:#BC6012;}
+#items li:nth-child(5) .list-item{background:#BE7700;}
+#items li:nth-child(6) .list-item{background:#C59500;}
+#items li:nth-child(7) .list-item{background:#CBA700;}
+
 .list-item {
-    background-color: #006cff;
+    /*background-color: #006cff;*/
 }
 
+#items li .task-item{background:#7cc6ff;}
+#items li:nth-child(1) .task-item{background:#005fa8;}
+#items li:nth-child(2) .task-item{background:#0072c9;}
+#items li:nth-child(3) .task-item{background:#0084ea;}
+#items li:nth-child(4) .task-item{background:#0090ff;}
+#items li:nth-child(5) .task-item{background:#28a1ff;}
+#items li:nth-child(6) .task-item{background:#4cb1ff;}
+#items li:nth-child(7) .task-item{background:#7cc6ff;}
+
+/*
 .task-item {
     background-color: #f26c00;
 }
+*/
 
 .item-delete {
     float: right;

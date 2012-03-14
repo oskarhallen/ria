@@ -35,8 +35,8 @@ function($, _, Backbone, TaskTemplate) {
             this.$('.item-content').text(content);
 
             if (this.model.get('done')) {
-                this.$('.item').css('background-color', '#2c2c2c');
-                this.$('.item-content').css('color', '#555555');
+               	this.$('#items li div').css('background-color', '#2c2c2c');
+                this.$('.item-content').css('color', '#aeaeae');
                 this.$('.item-content').css('text-decoration', 'line-through');
             }
         },
